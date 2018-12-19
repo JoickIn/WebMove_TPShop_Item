@@ -1,24 +1,19 @@
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————#
-#【base_driver】:
-# (0): 导入包。
-from appium import webdriver
-
-# (1): 创建函数 driver。
-def init_driver():
-    desired_caps = {}
-    desired_caps['platformName'] = 'Android'
-    desired_caps['platformVersion'] = '5.1'
-    desired_caps['deviceName'] = '192.168.56.101:5555'
-    # tpshop软件的包名
-    desired_caps['appPackage'] = 'com.tpshop.malls'
-    # tpshop软件的启动名
-    desired_caps['appActivity'] = '.SPMainActivity'
-    desired_caps['noReset'] = True
+#【我的页面】:
+# (0): 导包:
+from selenium.webdriver.common.by import By
+from base.base_action import BaseAction
 
 
-    # 声明 driver 对象
-    driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
-    return driver
+# (1): 创建我的页面的类。
+class MyPage(BaseAction):
+    # (2): 我的页面定位登录/注册的特征/元素。
+    login_and_sign_up_button = By.XPATH, "//*[@text='登录/注册' and @resource-id='com.tpshop.malls:id/nickname_txtv']"
+
+
+    # (3): 我的页面登录/注册动作函数。
+    def click_login_and_sign_up_button(self):
+        self.click(self.login_and_sign_up_button)
 
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————#

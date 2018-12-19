@@ -1,24 +1,20 @@
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————#
-#【base_driver】:
-# (0): 导入包。
-from appium import webdriver
-
-# (1): 创建函数 driver。
-def init_driver():
-    desired_caps = {}
-    desired_caps['platformName'] = 'Android'
-    desired_caps['platformVersion'] = '5.1'
-    desired_caps['deviceName'] = '192.168.56.101:5555'
-    # tpshop软件的包名
-    desired_caps['appPackage'] = 'com.tpshop.malls'
-    # tpshop软件的启动名
-    desired_caps['appActivity'] = '.SPMainActivity'
-    desired_caps['noReset'] = True
+#【page页面】:
+# (0): 导包
+from base.base_action import BaseAction
+from page.IndexPage import IndexPage
+from page.MyPage import MyPage
 
 
-    # 声明 driver 对象
-    driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
-    return driver
+# (1): page的类,统一入口。
+class Page(BaseAction):
+    @property
+    def IndexPage(self):
+        return IndexPage(self.driver)
+
+    @property
+    def MyPage(self):
+        return MyPage(self.driver)
 
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————#
