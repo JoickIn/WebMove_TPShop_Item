@@ -42,6 +42,27 @@ class TestLogin:
         self.Page.LoginPage.input_password('123456')
         # (5.3.3): 点击登录按钮
         self.Page.LoginPage.click_login()
+        # (5.3.4): 判断关键字: 登录成功。基本判断,断言。
+        # 解答: 如果登录成功等于 True 那么断言为 True 否则断言为 False 那么这个可以写为一行代码。看新的判断断言。
+        # if self.Page.LoginPage.is_toast_keyword("登录成功") == True:
+        #     assert True
+        # else:
+        #     assert False
+        #
+        #
+        # (5.3.4): 新的断言
+        # 解答: 那么这个意思就是说本身自己如果是正确的有这个关键字那么就直接断言为 True 如果没有那么直接也断言
+        #       为 Fasle。一个巧妙的处理手段。意思就是说直接断言返回的这个
+        #       self.Page.LoginPage.is_toast_keyword("登录成功")值即可。然后还有一个奇怪的写法。看这个奇怪
+        #       的写法。
+        assert self.Page.LoginPage.is_toast_keyword("登录成功")
+        #
+        #
+        # (5.3.4): 奇怪的写法。
+        # 解答: 那么就是说如果我希望关键字判断正确的时候给我返回 Fasle 的话那么,直接取反即可。但是一般不这么写。
+        # assert not self.Page.LoginPage.is_toast_keyword("登录成功")
+
+
 
 
 

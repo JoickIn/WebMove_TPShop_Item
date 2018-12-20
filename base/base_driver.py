@@ -13,6 +13,8 @@ def init_driver():
     desired_caps['appPackage'] = 'com.tpshop.malls'
     # tpshop软件的启动名
     desired_caps['appActivity'] = '.SPMainActivity'
+    # toast框架
+    desired_caps['automationName'] = 'Uiautomator2'
     desired_caps['noReset'] = True
 
 
