@@ -29,11 +29,37 @@ class TestLogin:
 
     # (5): 测试用例: longin
     def test_login(self):
-        # (5.1): 点击我的。(爆黄不用管是对的)
+        # (5.1): 点击我的。
         self.Page.IndexPage.click_my_button()
 
-        # (5.2): 登录/注册。(爆黄不用管是对的)
+        # (5.2): 登录/注册。
         self.Page.MyPage.click_login_and_sign_up_button()
+
+        # (5.3): 登录。
+        # (5.3.1): 填写 username
+        self.Page.LoginPage.input_username('13800138006')
+        # (5.3.2): 填写 password
+        self.Page.LoginPage.input_password('123456')
+        # (5.3.3): 点击登录按钮
+        self.Page.LoginPage.click_login()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————#

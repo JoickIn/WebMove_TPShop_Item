@@ -3,6 +3,7 @@
 # (0): 导包
 from base.base_action import BaseAction
 from page.IndexPage import IndexPage
+from page.LoginPage import LoginPage
 from page.MyPage import MyPage
 
 
@@ -15,6 +16,10 @@ class Page(BaseAction):
     @property
     def MyPage(self):
         return MyPage(self.driver)
+
+    @property
+    def LoginPage(self):
+        return LoginPage(self.driver)
 
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————#
