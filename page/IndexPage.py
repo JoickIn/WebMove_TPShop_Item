@@ -1,6 +1,7 @@
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————#
 #【首页 -> IndexPage】:
 # (0): 导包
+import allure
 from selenium.webdriver.common.by import By
 from base.base_action import BaseAction
 
@@ -11,6 +12,8 @@ class IndexPage(BaseAction):
     #      所以我们要用更精确的方式去进行一个定位。中间连接一个并且,这样使用逻辑运算符会更加的精确。
     my_button = By.XPATH, "//*[@text='我的' and @resource-id='com.tpshop.malls:id/tab_txtv']"
 
+    # (4): 配置步骤
+    @allure.step("首页-点击-我的-按钮")
     # (3): 首页我的按钮的动作(函数)
     def click_my_button(self):
         self.click(self.my_button)

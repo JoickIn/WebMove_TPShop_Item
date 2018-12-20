@@ -1,6 +1,7 @@
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————#
 #【我的页面】:
 # (0): 导包:
+import allure
 from selenium.webdriver.common.by import By
 from base.base_action import BaseAction
 
@@ -11,6 +12,8 @@ class MyPage(BaseAction):
     login_and_sign_up_button = By.XPATH, "//*[@text='登录/注册' and @resource-id='com.tpshop.malls:id/nickname_txtv']"
 
 
+    # (4): 配置步骤。
+    @allure.step("我的页面-点击-登录/注册-按钮")
     # (3): 我的页面登录/注册动作函数。
     def click_login_and_sign_up_button(self):
         self.click(self.login_and_sign_up_button)
