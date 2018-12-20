@@ -1,11 +1,11 @@
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————#
 #【测试脚本登录页面 -> test_login】:
 # (0): 导包。
-from page.IndexPage import IndexPage
-from page.MyPage import MyPage
 import time
+from base.base_analyze import analyze_file
 from base.base_driver import init_driver
 from page.Page import Page
+import pytest
 
 
 # (1): 创建脚本登录页面 test_login 的类。
@@ -18,7 +18,6 @@ class TestLogin:
 
     # (3): 初始化结束页面。
     def teardown(self):
-        time.sleep(5)
         self.driver.quit()
 
 
@@ -27,8 +26,16 @@ class TestLogin:
     #     print("test01")
 
 
-    # (5): 测试用例: longin
-    def test_login(self):
+    # (6): 配置参数化。在这个函数头上直接写即可。然后直接调用方法即可。看(6.1)
+    @pytest.mark.parametrize("args", analyze_file("test_login_data.yml", "test_login"))
+    # (5): 测试用例: longin/(6.1): 加入形参 args 看(6.2)
+    def test_login(self, args):
+        # (6.2): 准备数据。看(6.3)
+        username = args['username']
+        password = args['password']
+        info = args['info']
+
+
         # (5.1): 点击我的。
         self.Page.IndexPage.click_my_button()
 
@@ -37,9 +44,13 @@ class TestLogin:
 
         # (5.3): 登录。
         # (5.3.1): 填写 username
-        self.Page.LoginPage.input_username('13800138006')
+        # self.Page.LoginPage.input_username('13800138006')
+        # (6.4): 将字符串改为对应的数据变量。
+        self.Page.LoginPage.input_username(username)
         # (5.3.2): 填写 password
-        self.Page.LoginPage.input_password('123456')
+        # self.Page.LoginPage.input_password('123456')
+        # (6.4): 将字符串改为对应的数据变量。
+        self.Page.LoginPage.input_password(password)
         # (5.3.3): 点击登录按钮
         self.Page.LoginPage.click_login()
         # (5.3.4): 判断关键字: 登录成功。基本判断,断言。
@@ -55,7 +66,9 @@ class TestLogin:
         #       为 Fasle。一个巧妙的处理手段。意思就是说直接断言返回的这个
         #       self.Page.LoginPage.is_toast_keyword("登录成功")值即可。然后还有一个奇怪的写法。看这个奇怪
         #       的写法。
-        assert self.Page.LoginPage.is_toast_keyword("登录成功")
+        # assert self.Page.LoginPage.is_toast_keyword("登录成功")
+        # (6.4): 将字符串改为对应的数据变量。
+        assert self.Page.LoginPage.is_toast_keyword(info)
         #
         #
         # (5.3.4): 奇怪的写法。

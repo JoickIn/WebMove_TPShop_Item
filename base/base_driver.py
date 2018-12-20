@@ -15,7 +15,7 @@ def init_driver():
     desired_caps['appActivity'] = '.SPMainActivity'
     # toast框架
     desired_caps['automationName'] = 'Uiautomator2'
-    desired_caps['noReset'] = True
+    # desired_caps['noReset'] = True
 
 
     # 声明 driver 对象
