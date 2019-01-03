@@ -52,7 +52,7 @@ class BaseAction:
             #                      就行了,我们在使用的时候可以写小数的方式了,同时小数包含了整数。最好都写成这
             #                      个 float 这样你写不管是整数还是小数都没有问题。那么这个就是改 toast 的方法。
             self.find_element((By.XPATH, "//*[contains(@text, '%s')]" % text), timeout=5, poll=0.5)
-            # (2.4): 如果有这个你从 test_login(5.3.4) 传递过来的字。那么返回 True 否者返回看 (2.5)。
+            # (2.4): 如果有这个你从 test_login(5.3.4) 传递过来的字。那么返回 True 否者返回,看 (2.5)。
             return True
         except Exception:
             # (2.5): 如果没有的话返回 False

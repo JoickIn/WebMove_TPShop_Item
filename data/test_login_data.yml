@@ -34,20 +34,36 @@ test_login:
     password: "123456"
     info: "账号不存在"
 
-  test_login_007:
-    username: ""
-    password: "123456"
-    info: ""
-
-  test_login_008:
-    username: "13800138006"
-    password: ""
-    info: ""
-
   test_login_009:
     username: "138001311118006"
     password: "123456"
     info: "账号不存在"
+
+
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————#
+#【第 2 套脚本数据配置】:
+test_login_miss_part:
+  test_login_007:
+#    username: ""
+    username: ""
+    password: "123456"
+
+  test_login_008:
+    username: "13800138006"
+#    password: ""
+    password: ""
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

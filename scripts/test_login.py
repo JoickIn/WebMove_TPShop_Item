@@ -78,6 +78,38 @@ class TestLogin:
 
 
 
+    # (7): 第 2 套脚本设计 -> 只输入用户民或者密码。
+    # (7.1): 定义第 2 套函数。
+    @pytest.mark.parametrize("args", analyze_file("test_login_data.yml", "test_login_miss_part"))
+    def test_login_miss_part(self, args):
+        # (7.2): 准备数据。
+        username = args['username']
+        password = args['password']
+
+        # (7.3): 点击我的。
+        self.Page.IndexPage.click_my_button()
+
+        # (7.4): 登录/注册。
+        self.Page.MyPage.click_login_and_sign_up_button()
+
+        # (7.5): 输入用户名。
+        self.Page.LoginPage.input_username(username)
+
+        # (7.6): 输入密码。
+        self.Page.LoginPage.input_password(password)
+
+        # (8): 如果数据在设计的时候没有不输入的 key 那么就使用下面的写法。
+        # if "username" in args:
+            # (8.1): 登录输入用户名。
+            # self.Page.LoginPage.input_username(args['username'])
+
+        # if "password" in args:
+            # (8.2): 登录输入密码。
+            # self.Page.LoginPage.input_password(args['password'])
+
+
+
+
 
 
 
