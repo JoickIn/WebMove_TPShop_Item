@@ -98,7 +98,7 @@ class TestLogin:
         # (7.6): 输入密码。
         self.Page.LoginPage.input_password(password)
 
-        # (8): 如果数据在设计的时候没有不输入的 key 那么就使用下面的写法。
+        # (8): 如果数据在设计的时候没有不输入的 key 那么就使用下面的全部的写法。或者直接用上面的 (7) 系列也是可以的。
         # if "username" in args:
             # (8.1): 登录输入用户名。
             # self.Page.LoginPage.input_username(args['username'])
@@ -107,6 +107,12 @@ class TestLogin:
             # (8.2): 登录输入密码。
             # self.Page.LoginPage.input_password(args['password'])
 
+
+        # (9): 断言,如果登录按钮可以点击,那么不通过,如果登录按钮不可以点击,那么就通过。
+        if self.Page.LoginPage.is_login_button_enabled() == True:
+            assert False    
+        else:
+            assert True
 
 
 
