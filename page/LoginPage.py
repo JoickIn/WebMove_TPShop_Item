@@ -40,12 +40,13 @@ class LoginPage(BaseAction):
     def click_login(self):
         self.click(self.login_button)
 
-
     # (6): 定义一个方法这个方法是是不是一个登录的按钮。那么这个方法意思就是说如果你的这个按钮是可用的那么就
     #      返回 true 如果是不可用的话就返回 false
     def is_login_button_enabled(self):
         # (6.1): 那么就是说先找到这个按钮的元素,然后在点这个方法。-> .is_enabled()
-        return self.find_element(self.login_button).is_enabled()
+        # return self.find_element(self.login_button).is_enabled()
+        # (6.1.1): 改良版本,用 base 里面公共的方法。
+        return self.is_feature_enabled(self.login_button)
 
         # (6.2): 另外一个写法。那么这个写法的意思就是说,如果系统没给你提供这个is_enabled()的方法那么就自
         #        己去做一个这样的方法,这个方法的意思就是说去获取属性的值。这个方法适用于多个获取属性值的方
@@ -54,26 +55,4 @@ class LoginPage(BaseAction):
         #     return True
         # else:
         #     return False
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————#
